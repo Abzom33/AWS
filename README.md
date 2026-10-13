@@ -30,4 +30,20 @@ Steps:
 6. Repeat steps 1 - 6 
 
 
+3. Created an EC2 instance 
+
+# I created an EC2 instance and attached into Public Subnet and VPC .
+
+Steps:
+1. Click Launc Type
+2. Give a name
+3. Leave AMI and Instance type default 
+4. Edit Network Settings 
+5. Attach Network --> Custom VOC
+6. Subnet --> Public Subnet
+7. Finsih
+
+
+
+
 
