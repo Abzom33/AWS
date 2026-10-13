@@ -79,3 +79,28 @@ After we need to explicity associate ` Public Subnet` to this route table as by 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Challenges 
+
+When attempting this assignment here are the errors I came across and how I resolved them .
+
+1. My EC2 instance will not connect
+
+<img width="1597" height="712" alt="image" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
+
+
+
