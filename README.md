@@ -29,6 +29,7 @@ Steps:
 5. Choose AZ.
 6. Repeat steps 1 - 6 
 
+<img width="1105" height="723" alt="image" src="https://github.com/user-attachments/assets/eb463793-7f39-412b-a1a8-7ecc418d0fc0" />
 
 3. Created an EC2 instance 
 
