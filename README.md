@@ -36,6 +36,11 @@ Steps:
 Public EC2 SG: allow SSH/HTTP only from your IP
 <img width="1599" height="349" alt="image" src="https://github.com/user-attachments/assets/1e8d4a3a-422b-4420-934a-394923387131" />
 
+Private EC2 SG: allow only internal access
+
+<img width="1596" height="579" alt="image" src="https://github.com/user-attachments/assets/9d29c4eb-9245-456d-8cba-a7150c4b58b5" />
+
+
 
 5. Created an EC2 instance 
 
