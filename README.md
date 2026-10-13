@@ -33,10 +33,10 @@ Steps:
 
 3. Created an EC2 instance 
 
-# I created an EC2 instance and attached into Public Subnet and VPC .
+I created an EC2 instance and attached into Public Subnet and VPC .
 
 Steps:
-1. Click Launc Type
+1. Click Launch Type
 2. Give a name
 3. Leave AMI and Instance type default 
 4. Edit Network Settings 
@@ -44,6 +44,37 @@ Steps:
 6. Subnet --> Public Subnet
 7. Finsih
 
+<img width="1588" height="703" alt="image" src="https://github.com/user-attachments/assets/92faa77e-b4fe-4526-afe7-5f58854ab53c" />
+
+
+4. Created Internet Gateway
+
+This is going to allows our resources in my VPC to access the Internet.
+
+1. Click `Create Internet Gateway `
+2. Attach to my VPC
+
+<img width="1596" height="343" alt="image" src="https://github.com/user-attachments/assets/09c5a5af-8865-4be1-9f9f-966caecc41dc" />
+
+
+5. Update route table
+
+This is to ensure that traffic from our VPC is able to go the IGW , thus access the Internet or other resources.
+
+1. Click 'Create Route Table
+2. Give it a name and attach it to our VPC.
+
+<img width="1599" height="675" alt="image" src="https://github.com/user-attachments/assets/3be87165-9e29-47e3-8e9a-f4f8988056df" />
+
+
+Now we are going edit the route table for our Public Subnet to IGW.
+
+<img width="1252" height="194" alt="image" src="https://github.com/user-attachments/assets/05cbcc6f-1a23-49ff-87ee-4f36c900b8e0" />
+
+
+After we need to explicity associate ` Public Subnet` to this route table as by default Subnet uses the main route table that was created along with custom VPC. This is ensure that our `Public Subnet` uses this route table that we made.
+
+<img width="1342" height="276" alt="image" src="https://github.com/user-attachments/assets/2d9b61b8-4d3b-46cb-95c6-8e9b492ea377" />
 
 
 
