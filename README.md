@@ -11,7 +11,8 @@ Here are the steps I take in order to achieve this :
 
 I am going to create a Custom VPC with 2 subnets ; 1 public and 1 private
 
-![alt text](image.png)
+<img width="1593" height="575" alt="image" src="https://github.com/user-attachments/assets/aa0f55cb-6180-4bca-ace7-43486235ec70" />
+
 
 - Keep everything the same 
 - Choose the IPv4 CIDR Range ; 10.0.0.0/16
