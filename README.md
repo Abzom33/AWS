@@ -31,7 +31,13 @@ Steps:
 
 <img width="1105" height="723" alt="image" src="https://github.com/user-attachments/assets/eb463793-7f39-412b-a1a8-7ecc418d0fc0" />
 
-3. Created an EC2 instance 
+3. I created a Security Group
+
+Public EC2 SG: allow SSH/HTTP only from your IP
+<img width="1599" height="349" alt="image" src="https://github.com/user-attachments/assets/1e8d4a3a-422b-4420-934a-394923387131" />
+
+
+5. Created an EC2 instance 
 
 I created an EC2 instance and attached into Public Subnet and VPC .
 
@@ -47,7 +53,7 @@ Steps:
 <img width="1588" height="703" alt="image" src="https://github.com/user-attachments/assets/92faa77e-b4fe-4526-afe7-5f58854ab53c" />
 
 
-4. Created Internet Gateway
+5. Created Internet Gateway
 
 This is going to allows our resources in my VPC to access the Internet.
 
@@ -57,7 +63,7 @@ This is going to allows our resources in my VPC to access the Internet.
 <img width="1596" height="343" alt="image" src="https://github.com/user-attachments/assets/09c5a5af-8865-4be1-9f9f-966caecc41dc" />
 
 
-5. Update route table
+6. Update route table
 
 This is to ensure that traffic from our VPC is able to go the IGW , thus access the Internet or other resources.
 
@@ -102,5 +108,13 @@ When attempting this assignment here are the errors I came across and how I reso
 
 <img width="1597" height="712" alt="image" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
 
+Solution : 
+
+When I tried to this EC2 instance , I used the AWS EC2 Instance Connect which does not match my SG rules , therfore It blocked access. 
+The only it would work was if I connected from my own machine via SSH.
+
+The result :
+
+<img width="810" height="426" alt="image" src="https://github.com/user-attachments/assets/cd2bbbb8-85c7-4806-baa2-3b3eb6698e89" />
 
 
