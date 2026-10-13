@@ -88,6 +88,23 @@ After we need to explicity associate ` Public Subnet` to this route table as by 
 <img width="1342" height="276" alt="image" src="https://github.com/user-attachments/assets/2d9b61b8-4d3b-46cb-95c6-8e9b492ea377" />
 
 
+7. Result
+## Now our public subnet access Internet Via IGW 
+
+<img width="1597" height="712" alt="image" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
+
+
+## Private Subent
+
+
+1. To allow our resources inside the private instances access the Internet . We need to first create a an EC2 instance inside the subnet.
+
+   <img width="1324" height="41" alt="image" src="https://github.com/user-attachments/assets/9c8a5dab-7a62-4bb2-8ebe-3d1debeae1d0" />
+
+2. We need to create a NAT Gateway and route it our private subnet.
+
+<img width="1599" height="473" alt="image" src="https://github.com/user-attachments/assets/8ca6f969-c309-440c-bf6c-3bd29f0e919b" />
+
 
 
 
