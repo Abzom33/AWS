@@ -106,6 +106,18 @@ After we need to explicity associate ` Public Subnet` to this route table as by 
 <img width="1599" height="473" alt="image" src="https://github.com/user-attachments/assets/8ca6f969-c309-440c-bf6c-3bd29f0e919b" />
 
 
+3. Final Result :
+
+The public subnet has now become a bastion host . This means in order to access my private EC2 instance , I need to ssh from my bastion host into the private ec2 instance. As you
+can see they both instances have internet due to routing the public subnet to IGW and private subnet to NAT Gateway.
+
+
+
+## Video : 
+
+https://github.com/user-attachments/assets/d9d3f88f-fc9a-4e27-8abd-e58957cd3910
+
+
 
 
 
