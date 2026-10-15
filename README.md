@@ -1,154 +1,118 @@
-## AWS Assingment 1 -  VPC & Networking
+# AWS Assignment 1: VPC and Networking
 
-#### Objective : Create a custom VPC with one public and one private subnet, set up the correct routing for internet access, and deploy EC2 instances across them.
+**Objective:** Build a custom VPC with one public and one private subnet, configure routing so both can reach the internet, and deploy an EC2 instance in each.
 
+## Architecture
 
-### Steps
-Here are the steps I take in order to achieve this :
+```
+VPC (10.0.0.0/16)
+├── Public subnet   route 0.0.0.0/0 -> Internet Gateway
+│   ├── EC2 instance (bastion host)
+│   └── NAT Gateway
+└── Private subnet  route 0.0.0.0/0 -> NAT Gateway
+    └── EC2 instance (no public IP, reached via the bastion)
+```
 
+| Subnet  | Default route (0.0.0.0/0) | Inbound access                       |
+|---------|---------------------------|--------------------------------------|
+| Public  | Internet Gateway          | SSH/HTTP from my IP only             |
+| Private | NAT Gateway               | Internal VPC traffic only            |
 
-1. Create the VPC
+## Build steps
 
-I am going to create a Custom VPC with 2 subnets ; 1 public and 1 private
+### 1. Create the VPC
 
-<img width="1593" height="575" alt="image" src="https://github.com/user-attachments/assets/aa0f55cb-6180-4bca-ace7-43486235ec70" />
+I created a custom VPC with the IPv4 CIDR block `10.0.0.0/16` and left the other settings at their defaults.
 
+<img width="1593" height="575" alt="Creating the custom VPC" src="https://github.com/user-attachments/assets/aa0f55cb-6180-4bca-ace7-43486235ec70" />
 
-- Keep everything the same 
-- Choose the IPv4 CIDR Range ; 10.0.0.0/16
+### 2. Create the subnets
 
-2. Create the subnet
-Whats makes a subnet public if it's routed to the Internet Gateway , which gives resources inside VPC internet access.
-If it's not routed to IGW (Internet Gateway) then it's private subnet
+A subnet is public when its route table sends traffic to an Internet Gateway (IGW). Without that route it is private.
 
-Steps:
-1. First click 'Create Subnet'
-2. Then Attach custom VPC to the created subnet
-3. Pick name of Subnet
-4.  Choose an IPv4 subnet CIDR Range (**Note They must not overlap the other ranges in your VPC or subnets)
-5. Choose AZ.
-6. Repeat steps 1 - 6 
+1. Click **Create subnet**.
+2. Select the custom VPC.
+3. Name the subnet.
+4. Pick an IPv4 CIDR block. It must not overlap with any other subnet in the VPC.
+5. Choose an Availability Zone.
+6. Repeat for the second subnet.
 
-<img width="1105" height="723" alt="image" src="https://github.com/user-attachments/assets/eb463793-7f39-412b-a1a8-7ecc418d0fc0" />
+<img width="1105" height="723" alt="Public and private subnets" src="https://github.com/user-attachments/assets/eb463793-7f39-412b-a1a8-7ecc418d0fc0" />
 
-3. I created a Security Group
+### 3. Create the security groups
 
-Public EC2 SG: allow SSH/HTTP only from your IP
-<img width="1599" height="349" alt="image" src="https://github.com/user-attachments/assets/1e8d4a3a-422b-4420-934a-394923387131" />
+**Public EC2 security group:** allows SSH and HTTP from my IP only.
 
-Private EC2 SG: allow only internal access
+<img width="1599" height="349" alt="Public security group rules" src="https://github.com/user-attachments/assets/1e8d4a3a-422b-4420-934a-394923387131" />
 
-<img width="1596" height="579" alt="image" src="https://github.com/user-attachments/assets/9d29c4eb-9245-456d-8cba-a7150c4b58b5" />
+**Private EC2 security group:** allows internal traffic only.
 
+<img width="1596" height="579" alt="Private security group rules" src="https://github.com/user-attachments/assets/9d29c4eb-9245-456d-8cba-a7150c4b58b5" />
 
+### 4. Launch the public EC2 instance
 
-5. Created an EC2 instance 
+1. Click **Launch instance**.
+2. Give it a name.
+3. Keep the default AMI and instance type.
+4. Under **Network settings**, click **Edit**.
+5. Set the VPC to the custom VPC and the subnet to the public subnet.
+6. Launch.
 
-I created an EC2 instance and attached into Public Subnet and VPC .
+<img width="1588" height="703" alt="Public EC2 instance network settings" src="https://github.com/user-attachments/assets/92faa77e-b4fe-4526-afe7-5f58854ab53c" />
 
-Steps:
-1. Click Launch Type
-2. Give a name
-3. Leave AMI and Instance type default 
-4. Edit Network Settings 
-5. Attach Network --> Custom VOC
-6. Subnet --> Public Subnet
-7. Finsih
+### 5. Create the Internet Gateway
 
-<img width="1588" height="703" alt="image" src="https://github.com/user-attachments/assets/92faa77e-b4fe-4526-afe7-5f58854ab53c" />
+The IGW lets resources in the VPC reach the internet.
 
+1. Click **Create internet gateway**.
+2. Attach it to the custom VPC.
 
-5. Created Internet Gateway
+<img width="1596" height="343" alt="Internet Gateway attached to the VPC" src="https://github.com/user-attachments/assets/09c5a5af-8865-4be1-9f9f-966caecc41dc" />
 
-This is going to allows our resources in my VPC to access the Internet.
+### 6. Configure the public route table
 
-1. Click `Create Internet Gateway `
-2. Attach to my VPC
+1. Click **Create route table**, name it, and attach it to the custom VPC.
 
-<img width="1596" height="343" alt="image" src="https://github.com/user-attachments/assets/09c5a5af-8865-4be1-9f9f-966caecc41dc" />
+<img width="1599" height="675" alt="Creating the public route table" src="https://github.com/user-attachments/assets/3be87165-9e29-47e3-8e9a-f4f8988056df" />
 
+2. Add a route for `0.0.0.0/0` with the IGW as the target.
 
-6. Update route table
+<img width="1252" height="194" alt="Route to the Internet Gateway" src="https://github.com/user-attachments/assets/05cbcc6f-1a23-49ff-87ee-4f36c900b8e0" />
 
-This is to ensure that traffic from our VPC is able to go the IGW , thus access the Internet or other resources.
+3. Explicitly associate the public subnet with this route table. By default, every subnet uses the main route table created with the VPC, which has no route to the IGW.
 
-1. Click 'Create Route Table
-2. Give it a name and attach it to our VPC.
+<img width="1342" height="276" alt="Public subnet association" src="https://github.com/user-attachments/assets/2d9b61b8-4d3b-46cb-95c6-8e9b492ea377" />
 
-<img width="1599" height="675" alt="image" src="https://github.com/user-attachments/assets/3be87165-9e29-47e3-8e9a-f4f8988056df" />
+**Result:** the public instance can now reach the internet through the IGW.
 
+<img width="1597" height="712" alt="Public instance with internet access" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
 
-Now we are going edit the route table for our Public Subnet to IGW.
+### 7. Set up the private subnet
 
-<img width="1252" height="194" alt="image" src="https://github.com/user-attachments/assets/05cbcc6f-1a23-49ff-87ee-4f36c900b8e0" />
+1. Launch an EC2 instance in the private subnet.
 
+<img width="1324" height="41" alt="Private EC2 instance" src="https://github.com/user-attachments/assets/9c8a5dab-7a62-4bb2-8ebe-3d1debeae1d0" />
 
-After we need to explicity associate ` Public Subnet` to this route table as by default Subnet uses the main route table that was created along with custom VPC. This is ensure that our `Public Subnet` uses this route table that we made.
+2. Create a NAT Gateway in the public subnet, then add a `0.0.0.0/0` route to the NAT Gateway in the private subnet's route table.
 
-<img width="1342" height="276" alt="image" src="https://github.com/user-attachments/assets/2d9b61b8-4d3b-46cb-95c6-8e9b492ea377" />
+<img width="1599" height="473" alt="NAT Gateway route for the private subnet" src="https://github.com/user-attachments/assets/8ca6f969-c309-440c-bf6c-3bd29f0e919b" />
 
+## Result
 
-7. Result
-## Now our public subnet access Internet Via IGW 
+The public instance acts as a bastion host. To reach the private instance, I SSH into the bastion first and then SSH from there into the private instance. Both instances have outbound internet access: the public one through the IGW and the private one through the NAT Gateway.
 
-<img width="1597" height="712" alt="image" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
-
-
-## Private Subent
-
-
-1. To allow our resources inside the private instances access the Internet . We need to first create a an EC2 instance inside the subnet.
-
-   <img width="1324" height="41" alt="image" src="https://github.com/user-attachments/assets/9c8a5dab-7a62-4bb2-8ebe-3d1debeae1d0" />
-
-2. We need to create a NAT Gateway and route it our private subnet.
-
-<img width="1599" height="473" alt="image" src="https://github.com/user-attachments/assets/8ca6f969-c309-440c-bf6c-3bd29f0e919b" />
-
-
-3. Final Result :
-
-The public subnet has now become a bastion host . This means in order to access my private EC2 instance , I need to ssh from my bastion host into the private ec2 instance. As you
-can see they both instances have internet due to routing the public subnet to IGW and private subnet to NAT Gateway.
-
-
-
-## Video : 
+### Demo
 
 https://github.com/user-attachments/assets/d9d3f88f-fc9a-4e27-8abd-e58957cd3910
 
+## Problems I ran into
 
+### EC2 Instance Connect could not reach the public instance
 
+<img width="1597" height="712" alt="Connection attempt" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
 
+**Cause:** I first tried connecting through EC2 Instance Connect in the AWS console. Those connections come from AWS's own IP range, not from my machine, so the security group rule allowing SSH only from my IP blocked them.
 
+**Fix:** I connected over SSH from my own machine using the key pair, which matches the security group rule.
 
-
-
-
-
-
-
-
-
-
-
-
-
-## Challenges 
-
-When attempting this assignment here are the errors I came across and how I resolved them .
-
-1. My EC2 instance will not connect
-
-<img width="1597" height="712" alt="image" src="https://github.com/user-attachments/assets/b189a850-e1cc-49bd-8f2c-77ff5ba51f53" />
-
-Solution : 
-
-When I tried to this EC2 instance , I used the AWS EC2 Instance Connect which does not match my SG rules , therfore It blocked access. 
-The only it would work was if I connected from my own machine via SSH.
-
-The result :
-
-<img width="810" height="426" alt="image" src="https://github.com/user-attachments/assets/cd2bbbb8-85c7-4806-baa2-3b3eb6698e89" />
-
-
+<img width="810" height="426" alt="Successful SSH connection from my machine" src="https://github.com/user-attachments/assets/cd2bbbb8-85c7-4806-baa2-3b3eb6698e89" />
