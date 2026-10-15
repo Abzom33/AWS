@@ -19,7 +19,8 @@ Deploy two EC2 instances behind an ALB. The ALB must handle all incoming traffic
 Both Instances are in the same VPC  
 
 
-<img width="1599" height="388" alt="image" src="https://github.com/user-attachments/assets/41b8ea0c-74f6-42ff-afbb-e7f5fee325d7" />
+<img width="1353" height="325" alt="image" src="https://github.com/user-attachments/assets/2b5bdc93-8160-4de8-9fd1-8f515b0d8933" />
+
 
 
 
@@ -28,7 +29,9 @@ Both Instances are in the same VPC
 
 1b.  Here is the VPC :
 
-<img width="1357" height="410" alt="image" src="https://github.com/user-attachments/assets/b8a7fb04-8fec-418d-81c6-4d9d64c83149" />
+
+<img width="1361" height="360" alt="image" src="https://github.com/user-attachments/assets/938f19be-1be5-4853-aabf-b306153252da" />
+
 
 
 
