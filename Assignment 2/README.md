@@ -49,3 +49,22 @@ systemctl start httpd
 echo "<h1>Welcome name to Server 1</h1>"> /var/www/html/index.html
 
 ```
+
+2. Creating Application Load Balancer
+
+This going to sit in front of our EC2 instances and direct traffic to the EC2 instances , perform health checks and auto scale.
+
+
+2a . Creating Application Load Balancer (ALB)
+
+You are presented with two options when creating ALB:
+
+    1. Internet facing - This allows you to route request from the internet to your resource inside a VPC
+    2. Internal   - This allows you to route request internally within your VPC . Doesn't route outside access.
+
+    Based on this I am going use Internet facing as I need to my ALB to accept routes from the Internet since I am making web server which need Internet access .
+
+    To do this you need make your subnet public by attaching an IGW to the VPC and routing it to your subnets . 
+
+    
+
