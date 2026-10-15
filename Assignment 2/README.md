@@ -29,3 +29,20 @@ Both Instances are in the same VPC
 1b.  Here is the VPC :
 
 <img width="1357" height="410" alt="image" src="https://github.com/user-attachments/assets/b8a7fb04-8fec-418d-81c6-4d9d64c83149" />
+
+
+
+1c . Installing a simple web server for EC2 instance
+
+```
+!#/bin/bash
+yum upgrade -y
+yum update -y 
+yum install httpd -y
+
+systemctl enable httpd 
+systemctl start httpd
+
+echo "<h1>Welcome name to Server 1</h1>"> /var/www/html/index.html
+
+```
