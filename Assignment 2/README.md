@@ -94,4 +94,10 @@ Here is the result :
 
 
     
+2c . Creating Security Groups for the ALB
+
+Security Groups act as a firewall for the ALB , allow/deny traffic based on rules
+
+- ALB SG: allow HTTP from anywhere
+
 
