@@ -33,6 +33,12 @@ Both Instances are in the same VPC
 <img width="1361" height="360" alt="image" src="https://github.com/user-attachments/assets/938f19be-1be5-4853-aabf-b306153252da" />
 
 
+1c . Here is the subnets
+
+<img width="1413" height="176" alt="image" src="https://github.com/user-attachments/assets/5decf871-b015-4b0c-b0bb-3cdaa48b81bf" />
+
+
+
 
 
 1c . Installing a simple web server for EC2 instance
@@ -58,6 +64,7 @@ This going to sit in front of our EC2 instances and direct traffic to the EC2 in
 2a . Creating Application Load Balancer (ALB)
 
 You are presented with two options when creating ALB:
+
 
     1. Internet facing - This allows you to route request from the internet to your resource inside a VPC
     2. Internal   - This allows you to route request internally within your VPC . Doesn't route outside access.
