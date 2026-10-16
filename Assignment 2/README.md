@@ -78,7 +78,14 @@ You are presented with two options when creating ALB:
 
 Target Group = set of destination that the ALB will route to.
 
-In this case it is the EC2 instances
+In this case it is the EC2 instances :
+
+<img width="776" height="533" alt="image" src="https://github.com/user-attachments/assets/3f7b6de8-c3e1-489c-bf51-ba52c85f29df" />
+
+
+This is the destination of a Target Group :
+
+<img width="1316" height="353" alt="image" src="https://github.com/user-attachments/assets/7c56ae61-a03b-4c65-a81c-3bfcd6a29bcc" />
 
     
 
