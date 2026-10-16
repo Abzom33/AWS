@@ -87,5 +87,11 @@ This is the destination of a Target Group :
 
 <img width="1316" height="353" alt="image" src="https://github.com/user-attachments/assets/7c56ae61-a03b-4c65-a81c-3bfcd6a29bcc" />
 
+
+Here is the result :
+
+<img width="1390" height="675" alt="image" src="https://github.com/user-attachments/assets/a0b4a7b5-bef0-4441-aeaf-36e77bf30d77" />
+
+
     
 
