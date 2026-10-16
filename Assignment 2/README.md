@@ -71,7 +71,14 @@ You are presented with two options when creating ALB:
 
     Based on this I am going use Internet facing as I need to my ALB to accept routes from the Internet since I am making web server which need Internet access .
 
-    To do this you need make your subnet public by attaching an IGW to the VPC and routing it to your subnets . 
+    To do this you need make your subnet public by attaching an IGW to the VPC and routing it to your subnets .
+
+
+2b. Creating Target Group
+
+Target Group = set of destination that the ALB will route to.
+
+In this case it is the EC2 instances
 
     
 
