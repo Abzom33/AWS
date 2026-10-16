@@ -102,3 +102,23 @@ Security Groups act as a firewall for the ALB , allow/deny traffic based on rule
 
 <img width="1596" height="490" alt="image" src="https://github.com/user-attachments/assets/303d236a-a350-47dd-b567-5f3afaa32f74" />
 
+
+
+- EC2 SG: allow HTTP only from the ALB SG.
+- This is to make it private so th EC2 instance won't be available to the public
+
+  <img width="1328" height="194" alt="image" src="https://github.com/user-attachments/assets/978a73b8-1324-4188-90f7-9e1482f5dc21" />
+
+
+
+2D. Full ALB
+
+<img width="1334" height="271" alt="image" src="https://github.com/user-attachments/assets/cfb2b292-abb6-4822-b0c1-02a4e27681af" />
+
+
+
+
+3. Final Result
+
+
+
