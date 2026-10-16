@@ -122,3 +122,15 @@ Security Groups act as a firewall for the ALB , allow/deny traffic based on rule
 
 
 
+
+https://github.com/user-attachments/assets/4938907d-682c-47bc-9cf6-c0d542b06b14
+
+
+
+
+3a . Health Checks
+
+<img width="1592" height="692" alt="image" src="https://github.com/user-attachments/assets/c050dca1-b362-4ca7-9943-c3371eecf8db" />
+
+
+
