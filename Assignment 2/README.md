@@ -100,4 +100,5 @@ Security Groups act as a firewall for the ALB , allow/deny traffic based on rule
 
 - ALB SG: allow HTTP from anywhere
 
+<img width="1596" height="490" alt="image" src="https://github.com/user-attachments/assets/303d236a-a350-47dd-b567-5f3afaa32f74" />
 
